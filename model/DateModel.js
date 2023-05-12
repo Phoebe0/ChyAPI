@@ -1,22 +1,27 @@
 const pg = require('pg')
-// 创建连接对象
-const connect = {
+// 使用连接池进行数据库连接操作
+// 1. 创建连接对象
+const conn = {
   host: 'localhost', // 对应的服务器IP，如果是本地，则为local host
   user: 'postgres', // 用户
   password: 123456, // 密码
   port: 5432, // 端口号
-  database: 'postgres',
+  database: 'postgres', // 数据库名称
+  // 扩展属性
+  max: 20, // 连接池最大连接数
+  idleTimeoutMillis: 3000, // 连接最大空闲时间
 }
-
-const pool = new pg.Pool(connect)
-pool.connect(function (err) {
+// 创建连接池
+const pool = new pg.Pool(conn)
+// 执行连接操作 connect方法
+pool.connect(function (err, client, done) {
   if (err) {
-    return console.error('数据库连接出错', err)
+    return console.error('数据库连接错误❌！', err)
   }
   return console.log('数据库连接成功')
 })
-const Date = () => {
-  //常用sql语句，和mysql语句基本一致
+const selDate = () => {
+  //常用sql语句
   var sql = 'select * from product'
   return pool
     .query(sql)
@@ -29,7 +34,8 @@ const Date = () => {
     })
 }
 //关闭连接
+pool.end()
 
 module.exports = {
-  Date,
+  selDate,
 }

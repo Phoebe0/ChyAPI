@@ -1,7 +1,8 @@
-const { Date } = require('../model/DateModel')
+const { selDate } = require('../model/DateModel')
 // 定义处理数据的方法
 const findDate = async (req, res) => {
   let result = await Date()
+
   if (result) {
     res.send({
       meta: {
