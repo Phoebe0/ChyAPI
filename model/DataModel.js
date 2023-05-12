@@ -14,13 +14,14 @@ const conn = {
 // 创建连接池
 const pool = new pg.Pool(conn)
 // 执行连接操作 connect方法
-pool.connect(function (err, client, done) {
+pool.connect(function (err) {
   if (err) {
     return console.error('数据库连接错误❌！', err)
   }
   return console.log('数据库连接成功')
 })
-const selDate = () => {
+
+const selData = () => {
   //常用sql语句
   var sql = 'select * from product'
   return pool
@@ -33,9 +34,7 @@ const selDate = () => {
       return false
     })
 }
-//关闭连接
-pool.end()
 
 module.exports = {
-  selDate,
+  selData,
 }
