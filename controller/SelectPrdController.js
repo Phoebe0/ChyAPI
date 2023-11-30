@@ -1,8 +1,7 @@
-const { selData } = require('../model/DataModel')
+const { prdData } = require('../model/SelectPrdModel')
 // 定义处理数据的方法
-const findDate = async (req, res) => {
-  let result = await selData()
-
+const SelectPrd = async (req, res) => {
+  let result = await prdData()
   if (result) {
     res.send({
       meta: {
@@ -24,5 +23,5 @@ const findDate = async (req, res) => {
 
 // 导出成员
 module.exports = {
-  findDate,
+  SelectPrd,
 }
