@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 // 控制器添加
-const SelectPrdController = require('../controller/SelectPrdController')
-router.get('/SelectPrd', SelectPrdController.SelectPrd)
+const PrdController = require('../controller/PrdController')
+// 发送post请求
+router.post('/SelectPrd', PrdController.SelectPrd)
 module.exports = router

@@ -1,9 +1,11 @@
 {
   "name": "chyapi",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "pg": "^8.10.0"
   },
   "devDependencies": {
@@ -11,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "Tricia",
